@@ -1,3 +1,19 @@
+Metadata-Version: 2.4
+Name: ScientificMicroservices
+Version: 1.0.2
+Summary: Easily call the APIs by Scientific Microservices. Requires an API key to be registered (currently via RapidAPI)
+Author-email: Jegar Pitchforth <jegar@scientificmicroservices.com>, Jac Davis <jac@scientificmicroservices.com>
+Maintainer-email: Jegar Pitchforth <jegar@scientificmicroservices.com>
+License-Expression: MIT
+Project-URL: Homepage, https://github.com/jegar-p/py-ScientificMicroservices
+Project-URL: Issues, https://github.com/jegar-p/py-ScientificMicroservices/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
 # Scientific Microservices Python Wrapper
 
 This Python module provides a simple interface to the APIs offered by [Scientific Microservices](https://scientificmicroservices.com/how-it-works). These APIs deliver lightweight, cloud-hosted scientific models designed for rapid data analysis and preprocessing.
