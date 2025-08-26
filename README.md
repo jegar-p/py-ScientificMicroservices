@@ -30,7 +30,7 @@ api_key = os.environ("api_key")
 input_data = [1, 2, 4, 5, 40, 3, 5, 6]
 
 # Call the API
-outliers = DetectOutliers(input_data, api_key)
+outliers = DetectOutliers(api_key, input_data)
 
 # Process the response
 print(response)
