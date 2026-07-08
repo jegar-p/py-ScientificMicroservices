@@ -3,10 +3,10 @@ requires = ["setuptools >= 77.0.3", "requests"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "ScientificMicroservices"
-version = "1.0.4"
+version = "1.0.8"
 authors = [{ name="Jegar Pitchforth", email="jegar@scientificmicroservices.com"}, { name="Jac Davis", email="jac@scientificmicroservices.com"}]
 maintainers = [{ name="Jegar Pitchforth", email="jegar@scientificmicroservices.com"}]
-description = "Easily call the APIs by Scientific Microservices. Requires an API key to be registered (currently via RapidAPI)"
+description = "Easily call the APIs by Scientific Microservices. Requires an API key to be registered, see scientificmicroservices.com for more information."
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
