@@ -1,7 +1,8 @@
 import json
 import requests
+# import numpy as np
 
-__all__ = ["ABSynthesis", "MissingRowsCols", "MissingBias", "DetectOutliers"]
+__all__ = ["ABSynthesis", "MissingRowsCols", "MissingBias", "DetectOutliers", "MissingGraph"]
 
 def ABSynthesis(email, key, data_dict):
     '''
@@ -22,7 +23,16 @@ def MissingRowsCols(email, key, data_dict):
     Takes a list of dicts or a pandas table.
     '''
     Headers = {'email':email, 'key':key, 'content_type':"application/json" }
-    Body  = json.dumps(data_dict)
+    
+    cls = type(data_dict)
+    if cls.__name__ == 'DataFrame' and cls.__module__.startswith('pandas'):
+        # Convert pandas data frames for use in the api, as this is a common use case. 
+        cleaned_df = data_dict.replace({float('nan'): None})
+        cleaned_df = cleaned_df.to_dict(orient='records')
+        Body  = json.dumps(cleaned_df)
+    else:
+        Body  = json.dumps(data_dict)
+    
     return requests.post(url = "https://api.scientificmicroservices.com/missingrowscols", data = Body, headers=Headers).json()
 
 def MissingBias(email, key, array_pair_dict):
@@ -42,3 +52,23 @@ def DetectOutliers(email, key, array_dict):
     Headers = {'email':email, 'key':key, 'content_type':"application/json" }
     Body  = json.dumps(array_dict)
     return requests.post(url = "https://api.scientificmicroservices.com/detectoutliers", data = Body, headers=Headers).json()
+
+def MissingGraph(email, key, data_dict):
+    '''
+    Return a graph of the missing values in a dataset
+    Takes a list of dicts or a pandas table.
+    '''
+    Headers = {'email':email, 'key':key, 'content_type':"application/json" }
+    
+    cls = type(data_dict)
+    if cls.__name__ == 'DataFrame' and cls.__module__.startswith('pandas'):
+        # Convert pandas data frames for use in the api, as this is a common use case. 
+        cleaned_df = data_dict.replace({float('nan'): None})
+        cleaned_df = cleaned_df.to_dict(orient='records')
+        Body  = json.dumps(cleaned_df)
+    else:
+        Body  = json.dumps(data_dict)
+    
+    response = requests.post(url = "https://api.scientificmicroservices.com/missinggraph", data = Body, headers=Headers)
+    response.raise_for_status()
+    return response.content
